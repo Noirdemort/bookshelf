@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Stats</title>
+         <link type="text/css" rel="stylesheet" href="../static/materialize.min.css"  media="screen,projection"/>
+    <script src="../static/jquery.min.js"></script>
+                <script type="text/javascript" src="../static/materialize.min.js"></script>
+
+    </head>
+    <style>
+        body {
+            background-image: url(../static/water_wallpaper.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: inherit;
+            background-size: cover;
+        }
+
+        .login_box {
+            width: 80%;
+            height: 650px;
+            background-color: rgba(256, 256, 256, 0.3);
+
+            margin-left: 10%;
+            margin-top: 100px;
+        }
+
+        .form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+    </style>
+    <body>
+
+        <div class="login_box" style="padding-top:20px!important;">
+            <div style="text-align:center!important; font-family: Arial!important;">
+            <h3>Sales Report</h3>
+            </div>
+                <div class="row">
+
+                    <div class="col s6">
+                        <b style="margin-left: 50px; font-family: Arial; font-size: 30px">Top 10 buyers for 2019
+                        <ul style="margin-left: 70px; font-size: 25px">
+                            {% for buyer in buyers %}
+                            <li>{{ buyer.title() }}</li>
+                            {% endfor %}
+                        </ul>
+                        </b>
+                    </div>
+                    <div class="col s6" style="font-family: Arial; font-size: 23px;font-weight: bold;margin-top: 25px">
+                        <p>Year: {{ year }}</p>
+                        <p>Total Sales: {{ total }}</p>
+                        <p>Sales Tax: {{ (total*0.18)//1 }}</p>
+                        <p>Average Sales: {{ total//12 }} </p>
+                        <p>Total number of books sold: {{ book_count }}</p>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookShelf</title>
+
+    <!-- Compiled and minified CSS -->
+    <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="../static/materialize.min.css"  media="screen,projection"/>
+    <script src="../static/jquery.min.js"></script>
+
+
+</head>
+<style>
+   body {
+            background-image: url(../static/photo-house.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: inherit;
+            background-size: cover;
+        }
+    input[placeholder], [placeholder], *[placeholder] {
+    color: black !important;
+    }
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #0fa8a8;
+  opacity: 1; /* Firefox */
+    }
+</style>
+
+<body>
+
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+    {% for i in options %}
+  <li><a href="{{ options[i] }}">{{ i }}</a></li>
+    {% endfor %}
+</ul>
+
+{# Navigation Bar #}
+<nav style="width:80%!important;margin:0 auto!important;">
+  <div class="nav-wrapper" style="padding-left:20px!important;padding-right:20px!important;">
+    <a class="brand-logo"> BookShelf</a>
+    <ul class="right hide-on-med-and-down">
+         <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ name }}<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a href="{{ action["route"] }}">{{ action["text"] }}</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+{# Search Bar #}
+
+    <div class="row">
+      <div class="row" style="padding-left:20px!important;padding-right:20px!important;">
+        <div class="input-field col s12">
+          <form action="/search" method="post">
+              <label style="color:black!important;">Search</label>
+              <div class="row">
+              <input class="col s11" type="text" name="search" placeholder="Search using Name, genre, author, isbn... " required/>
+              <input class="col s1 btn" type="submit"/>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+{# Book Card #}
+
+        <div class="row">
+            {% for book in books %}
+                <div class="col s4">
+          <div class="card" style="height:270px!important;width:320px!important;">
+            <div class="card-image">
+              <img src="../static/snow_valley.jpg">
+              <span class="card-title">{{ book[1].title() }}</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light red" href="/buy/{{ book[0] }}"><i class="material-icons">add</i></a>
+            </div>
+            <div class="card-content">
+              <p>{{ book[2].title() }}</p>
+            </div>
+          </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+</body>
+<script type="text/javascript" src="../static/materialize.min.js"></script>
+<script>
+      $('.dropdown-trigger').dropdown();
+
+</script>
+</html>

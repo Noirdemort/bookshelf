@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buy Book</title>
+
+    <!-- Compiled and minified CSS -->
+    <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="../static/materialize.min.css"  media="screen,projection"/>
+    <script src="../static/jquery.min.js"></script>
+
+
+</head>
+<style>
+   body {
+            background-image: url(../static/photo-house.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: inherit;
+            background-size: cover;
+        }
+
+    .login_box {
+            width: 1150px;
+            height: 600px;
+            background-color: rgba(200, 200, 150, 0.5);
+            text-align: center;
+            margin-left: 10%;
+            margin-top: 50px;
+        }
+
+        .form {
+            text-align: center;
+        }
+
+</style>
+
+<body>
+
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+
+<nav style="width:80%!important;margin:0 auto!important;">
+  <div class="nav-wrapper" style="padding-left:20px!important;padding-right:20px!important;">
+    <a href="#!" class="brand-logo"> BookShelf</a>
+    <ul class="right hide-on-med-and-down">
+         <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ user }}<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a href="/logout">Log out</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+ <div class="login_box" style="padding-left:20px!important;padding-right:20px!important;">
+
+     <div class="row">
+         <div class="col s6"><img src="../static/book_logo.png" style="height: 350px; width: 400px; margin-top: 150px" alt="Book Logo"></div>
+         <div class="col s6">
+             <form style="margin-top: 100px" method="post" action="/buy/{{ book_id }}">
+
+
+             <b>{{ book_name.title() }} - by {{ book_author.title() }} </b><br><br>
+             <b>  Rs. {{ price }}/-</b>
+
+             <br><br>
+             <div class="row">
+                 <b><label class="col s3" style="margin-top:20px!important;">Quantity</label></b>
+                 <input hidden name="book_id" value="{{ book_id }}"/>
+                 <b><input class="col s9" type="number" name="count" placeholder="No. of copies" required></b>
+             </div>
+
+             <br>
+
+             <div class="row">
+                 <label class="col s3" style="margin-top:20px!important;"><b>Address</b></label>
+                 <input class="col s9" type="text" name="address" placeholder="Address" value="{{ address }}" required>
+             </div>
+
+                 <input type="submit" value="Buy" class="btn">
+
+            </form>
+         </div>
+     </div>
+
+ </div>
+
+
+
+</body>
+<script type="text/javascript" src="../static/materialize.min.js"></script>
+<script>
+      $('.dropdown-trigger').dropdown();
+
+</script>
+</html>

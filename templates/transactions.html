@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transactions</title>
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="../static/materialize.min.css"  media="screen,projection"/>
+    <script src="../static/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/materialize.min.js"></script>
+</head>
+<style>
+   body {
+       background: url(../static/photo-house.jpg) no-repeat fixed;
+       background-position: inherit;
+       background-size: cover;
+        }
+
+</style>
+<body>
+
+<h1 class="center">Your Transactions</h1>
+
+{% if sell_records  %}
+<h3 class="center">You Sold </h3>
+<table class="centered striped">
+        <thead>
+          <tr>
+              <th>Book Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Cost</th>
+              <th>Date</th>
+              <th>Buyer</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for record in sell_records %}
+          <tr>
+            <td>{{ record['title'] }}</td>
+            <td>{{ record['cost']//record['count'] }}</td>
+            <td>{{ record['count'] }}</td>
+              <td>{{ record['cost'] }}</td>
+              <td>{{ record['day'] }}/{{ record['month'] }}/{{ record['year'] }}</td>
+              <td>{{ record['buyer'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endif %}
+
+{% if buy_records  %}
+<h3 class="center">You Bought </h3>
+<table class="centered striped">
+        <thead>
+          <tr>
+              <th>Book Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Cost</th>
+              <th>Date</th>
+              <th>Seller</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for record in buy_records %}
+          <tr>
+            <td>{{ record['title'].title() }}</td>
+            <td>{{ record['cost']//record['count'] }}</td>
+            <td>{{ record['count'] }}</td>
+              <td>{{ record['cost'] }}</td>
+              <td>{{ record['day'] }}/{{ record['month'] }}/{{ record['year'] }}</td>
+              <td>{{ record['seller'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endif %}
+</body>
+</html>

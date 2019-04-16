@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <style>
+        body {
+            background-image: url(../static/snow_valley.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: inherit;
+            background-size: cover;
+            text-align: center;
+        }
+
+        .login_box {
+            width: 500px;
+            height: 500px;
+            background-color: rgba(256, 256, 256, 0.3);
+            text-align: center;
+            margin-left: 500px;
+            margin-top: 150px;
+        }
+
+        .form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+    </style>
+    <body>
+
+        <div class="login_box">
+                </br>
+                <h1>User Registration</h1>
+                <form action="/register" method="post">
+                    <input type="text" name="email" placeholder="Email" required>
+                </br>
+                </br>
+                </br>
+                    <input type="password" name="password" placeholder="Password" required>
+                </br>
+                </br>
+                </br>
+                    <input type="password" name="cpassword" placeholder="Confirm Password" required>
+                </br>
+                </br>
+                </br>
+                    Add as Seller: <input type="checkbox" name="seller" placeholder="Add as Seller">
+                </br>
+                </br>
+                </br>
+                    <input type="url" name="payment_url" placeholder="Payment Link">
+                </br>
+                </br>
+                </br>
+                    <input type="text" name="address" placeholder="Address" required>
+                </br>
+                </br>
+                </br>
+                    <input value="Register" type="submit">
+                </form>
+        </div>
+        <a href="/login">Already have an account?</a>
+    </body>
+</html>

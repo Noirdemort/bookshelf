@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>Edit Profile</title>
+         <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="../static/materialize.min.css"  media="screen,projection"/>
+        <script src="../static/jquery.min.js"></script>
+        <script type="text/javascript" src="../static/materialize.min.js"></script>
+
+    </head>
+    <style>
+        body {
+            background-image: url(../static/snow_valley.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: inherit;
+            background-size: cover;
+        }
+
+        .login_box {
+            width: 500px;
+            height: 600px;
+            background-color: rgba(256, 256, 256, 0.8);
+            text-align: center;
+            margin-left: 500px;
+            margin-top: 50px;
+        }
+
+        .form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+    </style>
+    <body>
+
+        <div class="login_box" style="padding-left:20px!important;padding-right:20px!important;">
+               </br>
+                <h2>Edit Profile</h2>
+                <form action="/edit_profile" method="post">
+                    <div class="row">
+                        <label class="col s6" style="margin-top:20px!important;color: black!important;"><b>{{ token }}</b></label>
+                    </div>
+                    <div class="row">
+                        <label class="col s3" style="margin-top:20px!important;color: black!important;"><b>Password</b></label>
+                    <input class="col s9" type="password" name="password" placeholder="New Password" >
+                    </div>
+
+                    <div class="row">
+                        <label class="col s3" style="margin-top:20px!important; color: black!important;"><b>Confirm Password</b></label>
+                    <input class="col s9" type="password" name="cpassword" placeholder="Confirm Password" >
+                    </div>
+
+
+                    <div class="row">
+                        <label>
+                    <input type="checkbox" class="filled-in" name="seller">
+                            <span style="color: black!important;">Add Seller Capabilities</span>
+                        </label>
+                    </div>
+
+                    <div class="row">
+                        <label class="col s3" style="margin-top:20px!important;color: black!important;"><b>Address</b></label>
+                    <input class="col s9" type="text" name="address" value="{{ address }}" placeholder="Address">
+                    </div>
+
+
+                    <div class="row">
+                        <label class="col s3" style="margin-top:20px!important;color: black!important;"><b>Payment Link</b></label>
+                    <input class="col s9" type="url" name="payment_url" placeholder="Payment Link">
+                    </div>
+
+                    <input type="submit" value="Update Profile" class="btn" />
+                </form>
+        </div>
+    </body>
+</html>
